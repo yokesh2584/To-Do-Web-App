@@ -16,7 +16,7 @@ const TodoList = () => {
   const getTodos = async () => {
     try {
       const response = await axios.get<{ todos: Todo[] }>(
-        "http://localhost:3000/todos/get-todo",
+        "https://todo-web-server.vercel.app/todos/get-todo",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -37,7 +37,7 @@ const TodoList = () => {
   const handleAddTodo = async () => {
     try {
       const response = await axios.post<{ todo: Todo }>(
-        "http://localhost:3000/todos/create-todo",
+        "https://todo-web-server.vercel.app/todos/create-todo",
         { todoItem: todo },
         {
           headers: {
@@ -57,7 +57,7 @@ const TodoList = () => {
     try {
       const updatedStatus = status === "pending" ? "completed" : "pending";
       await axios.put<{ todo: Todo }>(
-        `http://localhost:3000/todos/update-todo/${id}`,
+        `https://todo-web-server.vercel.app/todos/update-todo/${id}`,
         { status: updatedStatus },
         {
           headers: {
@@ -79,7 +79,7 @@ const TodoList = () => {
   const handleDelete = async (id: string) => {
     try {
       await axios.delete<{ todo: Todo }>(
-        `http://localhost:3000/todos/delete-todo/${id}`,
+        `https://todo-web-server.vercel.app/todos/delete-todo/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

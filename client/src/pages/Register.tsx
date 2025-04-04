@@ -34,7 +34,7 @@ const Register = () => {
   const handleSignup = async () => {
     try {
       const response = await axios.post<IResponse>(
-        "http://localhost:3000/users/signup",
+        "https://todo-web-server.vercel.app/users/signup",
         {
           username,
           email,
