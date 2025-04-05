@@ -27,6 +27,8 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/users", userRoutes);
 app.use("/todos", todoRoutes);
 
+export default app;
+
 app.listen(port, () =>
   console.log(`Server running on "http://localhost:${port}"`)
 );
