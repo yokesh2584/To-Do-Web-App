@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: "https://mytodos-site-webapp.vercel.app",
+    origin: process.env.FRONTEND_URI,
     credentials: true,
   })
 );
