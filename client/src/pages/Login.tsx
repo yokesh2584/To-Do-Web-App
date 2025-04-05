@@ -16,14 +16,11 @@ interface IResponse {
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [token, setToken] = useState<string>(
-    localStorage.getItem("token") || ""
-  );
   const [error, setError] = useState<string | null>(null);
   const [passwordInputType, setPasswordInputType] =
     useState<string>("password");
   const navigate = useNavigate();
-  console.log(token);
+  // console.log(token);
 
   const handlePasswordInputType = () => {
     setPasswordInputType(
@@ -41,8 +38,9 @@ const Login = () => {
         }
       );
       const { user, token } = response.data;
-      console.log("User:", user);
-      setToken(token);
+      // console.log("User:", user);
+      localStorage.setItem("UserName", user.username);
+      localStorage.setItem("UserEmail", user.email);
       localStorage.setItem("token", token);
       navigate("/todos");
     } catch (err) {

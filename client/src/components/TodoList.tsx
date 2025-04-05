@@ -10,6 +10,8 @@ interface Todo {
 }
 
 const TodoList = () => {
+  const [showPopup, setShowPopup] = useState<boolean>(true);
+  const [username, setUsername] = useState<string>("");
   const [todo, setTodo] = useState<string>("");
   const [todos, setTodos] = useState<Todo[]>([]);
 
@@ -31,7 +33,13 @@ const TodoList = () => {
     }
   };
   useEffect(() => {
+    const username = localStorage.getItem("username") ?? "";
+    setUsername(username);
     getTodos();
+
+    const timer = setTimeout(() => setShowPopup(false), 3000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleAddTodo = async () => {
@@ -95,6 +103,11 @@ const TodoList = () => {
 
   return (
     <div className="todo-container">
+      {showPopup && (
+        <div className="popup-welcome">
+          👋 Welcome, <span className="username">{username}</span>!
+        </div>
+      )}
       <h1 className="todo-title">Pin Task</h1>
       <div className="todo-input-container">
         <input
@@ -128,8 +141,7 @@ const TodoList = () => {
               type="button"
               onClick={() => handleDelete(t._id)}
             >
-              {/* <i className="bi bi-trash3-fill"></i> */}
-              ❌
+              {/* <i className="bi bi-trash3-fill"></i> */}❌
             </button>
           </li>
         ))}

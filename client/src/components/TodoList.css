@@ -125,3 +125,47 @@
     width: 100%;
   }
 }
+
+.popup-welcome {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  font-size: 1.25rem;
+  font-weight: bold;
+  z-index: 1000;
+  animation: fadeInScaleUp 0.6s ease-out, fadeOutScaleDown 0.6s ease-in 2.4s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.username {
+  color: #4e8df5;
+}
+
+@keyframes fadeInScaleUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes fadeOutScaleDown {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
